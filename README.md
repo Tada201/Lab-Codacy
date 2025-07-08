@@ -1,4 +1,33 @@
+### A basic Java Project assignment for PRO192
+Testing basic code checker cpapbility and assesment of coding standard utlity tools online. Using Codacy and Snyk
+
+---
+
 # Student Management System
+
+
+## Installing Maven using Chocolatey
+
+If you are on Windows and want to install Maven using Chocolatey, follow these steps:
+
+1. Open an elevated Command Prompt or PowerShell (Run as Administrator).
+
+2. Run the following command to install Maven:
+
+```
+choco install maven
+```
+
+3. After installation, you can verify Maven is installed by running:
+
+```
+mvn -version
+```
+
+Make sure Chocolatey is installed on your system before running the above commands. For more information, visit https://chocolatey.org/install
+
+
+
 
 ## Build and Run Instructions
 
