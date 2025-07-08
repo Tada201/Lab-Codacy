@@ -1,6 +1,7 @@
 package service;
 
 import model.Student;
+import util.InputUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -44,8 +45,7 @@ public class StudentService {
         List<Student> filteredStudents = new ArrayList<>();
         for (Student student : students) {
             String fullName = student.getFullName();
-            String lowerFullName = fullName.toLowerCase(Locale.ROOT);
-            boolean containsQuery = lowerFullName.contains(normalizedQuery);
+            boolean containsQuery = InputUtil.containsNormalized(fullName, normalizedQuery);
             if (containsQuery) {
                 filteredStudents.add(student);
             }

@@ -1,6 +1,7 @@
 package util;
 
 import java.util.Scanner;
+import java.util.Locale;
 
 public class InputUtil {
     private final Scanner scanner = new Scanner(System.in);
@@ -35,5 +36,11 @@ public class InputUtil {
                 System.out.println("Invalid input. Please enter a numeric value.");
             }
         }
+    }
+    
+    public static boolean containsNormalized(String source, String query) {
+        String normalizedSource = source.toLowerCase(Locale.ROOT);
+        String normalizedQuery = query.toLowerCase(Locale.ROOT);
+        return normalizedSource.contains(normalizedQuery);
     }
 }
