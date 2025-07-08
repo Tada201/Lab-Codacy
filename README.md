@@ -1,40 +1,35 @@
-# Student Management Project
+# Student Management System
 
-## Maven Installation
+## Build and Run Instructions
 
-If you do not have Maven installed on your system, you can install it using Chocolatey (choco) on Windows:
+### Build the Jar
 
-1. Open an elevated Command Prompt or PowerShell (Run as Administrator).
-2. Run the following command to install Maven:
+1. Open a terminal and navigate to the `SourceCode` directory where the `pom.xml` file is located.
 
-```
-choco install maven
-```
-
-3. After installation, verify Maven is installed correctly by running:
+2. Run the following Maven command to clean and package the project, which will compile the code and create the executable jar file:
 
 ```
-mvn -version
+mvn clean package
 ```
 
-This should display the Maven version and Java version being used.
+3. After a successful build, the jar file will be created in the `SourceCode/Output` directory. The jar file name is dynamically set via the `jarname.properties` file.
 
-## Building the Project
+### Run the Jar
 
-To build the project and create an executable jar file, navigate to the `SourceCode` directory and run:
+1. Navigate to the `SourceCode/Output` directory.
 
-```
-mvn package
-```
-
-The jar file will be generated in the `SourceCode/target` directory, named `student-management-1.0-SNAPSHOT-shaded.jar`.
-
-## Running the Jar File
-
-To run the generated jar file, use the following command:
+2. Run the jar file using the following command, replacing the jar file name with the one specified in your `jarname.properties` file (e.g., `StudentManagement-02.jar`):
 
 ```
-java -jar SourceCode/target/student-management-1.0-SNAPSHOT-shaded.jar
+java -jar StudentManagement-01.jar
 ```
 
-This will start the application with the main class `app.Main`.
+### Notes
+
+- The main class is `app.Main`.
+- The jar file name is configured dynamically using the `properties-maven-plugin` and the `jarname.properties` file.
+- Ensure you run the commands from the correct directories as specified above.
+
+---
+
+This completes the build and run setup for the Student Management System.
