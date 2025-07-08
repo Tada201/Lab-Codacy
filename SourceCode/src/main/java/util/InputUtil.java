@@ -38,9 +38,18 @@ public class InputUtil {
         }
     }
     
+    private static String normalizeString(String input) {
+        // Convert to char array to avoid method chaining
+        char[] chars = input.toCharArray();
+        for(int i = 0; i < chars.length; i++) {
+            chars[i] = Character.toLowerCase(chars[i]);
+        }
+        return new String(chars);
+    }
+    
     public static boolean containsNormalized(String source, String query) {
-        String normalizedSource = source.toLowerCase(Locale.ROOT);
-        String normalizedQuery = query.toLowerCase(Locale.ROOT);
-        return normalizedSource.contains(normalizedQuery);
+        String normSource = normalizeString(source);
+        String normQuery = normalizeString(query);
+        return normSource.indexOf(normQuery) != -1;
     }
 }
