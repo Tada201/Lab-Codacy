@@ -18,7 +18,8 @@ public class InputUtil {
 
     public String getStringInput(String prompt) {
         System.out.print(prompt);
-        return scanner.nextLine().trim();
+        String input = scanner.nextLine();
+        return input.trim();
     }
 
     public double getGpaInput(String prompt) {

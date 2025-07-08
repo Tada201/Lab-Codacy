@@ -4,7 +4,6 @@ import model.Student;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 public class StudentService {
     private final List<Student> students = new ArrayList<>();
@@ -42,9 +41,13 @@ public class StudentService {
 
     public List<Student> searchStudents(String nameQuery) {
         String normalizedQuery = nameQuery.toLowerCase(Locale.ROOT);
-        return students.stream()
-                .filter(student -> student.getFullName().toLowerCase(Locale.ROOT).contains(normalizedQuery))
-                .collect(Collectors.toList());
+        List<Student> filteredStudents = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getFullName().toLowerCase(Locale.ROOT).contains(normalizedQuery)) {
+                filteredStudents.add(student);
+            }
+        }
+        return filteredStudents;
     }
 
     public List<Student> getAllStudents() {

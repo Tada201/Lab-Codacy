@@ -5,7 +5,7 @@ import service.StudentService;
 import util.InputUtil;
 import java.util.List;
 
-public class Main {
+public final class Main {
     private final StudentService studentService;
     private final InputUtil inputUtil;
 
@@ -19,7 +19,8 @@ public class Main {
     }
 
     private void run() {
-        while (true) {
+        boolean running = true;
+        while (running) {
             System.out.println("\nStudent Management System");
             System.out.println("1. Add student");
             System.out.println("2. Delete student");
@@ -44,8 +45,8 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Exiting...");
-                    System.exit(0);
-                    break; // Added break to satisfy linter
+                    running = false;
+                    break;
                 default:
                     System.out.println("Invalid choice! Please enter 1-5.");
             }
@@ -82,7 +83,9 @@ public class Main {
             System.out.println("No matching students found.");
         } else {
             System.out.println("Search results:");
-            results.forEach(System.out::println);
+            for (Student student : results) {
+                System.out.println(student);
+            }
         }
     }
 
@@ -93,7 +96,9 @@ public class Main {
         if (students.isEmpty()) {
             System.out.println("No students in the system.");
         } else {
-            students.forEach(System.out::println);
+            for (Student student : students) {
+                System.out.println(student);
+            }
         }
     }
 }
