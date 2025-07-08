@@ -43,7 +43,10 @@ public class StudentService {
         String normalizedQuery = nameQuery.toLowerCase(Locale.ROOT);
         List<Student> filteredStudents = new ArrayList<>();
         for (Student student : students) {
-            if (student.getFullName().toLowerCase(Locale.ROOT).contains(normalizedQuery)) {
+            String fullName = student.getFullName();
+            String lowerFullName = fullName.toLowerCase(Locale.ROOT);
+            boolean containsQuery = lowerFullName.contains(normalizedQuery);
+            if (containsQuery) {
                 filteredStudents.add(student);
             }
         }
