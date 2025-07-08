@@ -40,8 +40,10 @@ public class InputUtil {
     
     
     public static boolean containsNormalized(String source, String query) {
-        String normSource = source.toLowerCase().trim();
-        String normQuery = query.toLowerCase().trim();
+        String normSourceLower = source.toLowerCase(java.util.Locale.ROOT);
+        String normSource = normSourceLower.trim();
+        String normQueryLower = query.toLowerCase(java.util.Locale.ROOT);
+        String normQuery = normQueryLower.trim();
         return normSource.indexOf(normQuery) != -1;
     }
 }
