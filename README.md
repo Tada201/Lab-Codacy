@@ -21,7 +21,7 @@ mvn clean package
 2. Run the jar file using the following command, replacing the jar file name with the one specified in your `jarname.properties` file (e.g., `StudentManagement-02.jar`):
 
 ```
-java -jar StudentManagement-01.jar
+java -jar StudentManagement-02.jar
 ```
 
 ### Notes
@@ -32,4 +32,4 @@ java -jar StudentManagement-01.jar
 
 ---
 
-This completes the build and run setup for the Student Management System.
+This completes the build and run setup for the basic Student Management System.

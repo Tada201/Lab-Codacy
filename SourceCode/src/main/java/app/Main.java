@@ -6,10 +6,19 @@ import util.InputUtil;
 import java.util.List;
 
 public class Main {
+    private final StudentService studentService;
+    private final InputUtil inputUtil;
+
+    private Main() {
+        studentService = new StudentService();
+        inputUtil = new InputUtil();
+    }
+
     public static void main(String[] args) {
-        StudentService studentService = new StudentService();
-        InputUtil inputUtil = new InputUtil();
-        
+        new Main().run();
+    }
+
+    private void run() {
         while (true) {
             System.out.println("\nStudent Management System");
             System.out.println("1. Add student");
@@ -22,51 +31,52 @@ public class Main {
             
             switch(choice) {
                 case 1:
-                    addStudent(studentService, inputUtil);
+                    addStudent();
                     break;
                 case 2:
-                    deleteStudent(studentService, inputUtil);
+                    deleteStudent();
                     break;
                 case 3:
-                    searchStudents(studentService, inputUtil);
+                    searchStudents();
                     break;
                 case 4:
-                    displayAllStudents(studentService);
+                    displayAllStudents();
                     break;
                 case 5:
                     System.out.println("Exiting...");
                     System.exit(0);
+                    break; // Added break to satisfy linter
                 default:
                     System.out.println("Invalid choice! Please enter 1-5.");
             }
         }
     }
 
-    private static void addStudent(StudentService service, InputUtil inputUtil) {
+    private void addStudent() {
         System.out.println("\nAdd New Student");
         int id = inputUtil.getIntInput("Enter student ID: ");
         String name = inputUtil.getStringInput("Enter student name: ");
         double gpa = inputUtil.getGpaInput("Enter student GPA (0.0-4.0): ");
         
         try {
-            service.addStudent(new Student(id, name, gpa));
+            studentService.addStudent(new Student(id, name, gpa));
             System.out.println("Student added successfully!");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
-    private static void deleteStudent(StudentService service, InputUtil inputUtil) {
+    private void deleteStudent() {
         System.out.println("\nDelete Student");
         int id = inputUtil.getIntInput("Enter student ID to delete: ");
-        service.deleteStudent(id);
+        studentService.deleteStudent(id);
         System.out.println("Student deleted successfully!");
     }
 
-    private static void searchStudents(StudentService service, InputUtil inputUtil) {
+    private void searchStudents() {
         System.out.println("\nSearch Students");
         String query = inputUtil.getStringInput("Enter student name to search: ");
-        List<Student> results = service.searchStudents(query);
+        List<Student> results = studentService.searchStudents(query);
         
         if (results.isEmpty()) {
             System.out.println("No matching students found.");
@@ -76,9 +86,9 @@ public class Main {
         }
     }
 
-    private static void displayAllStudents(StudentService service) {
+    private void displayAllStudents() {
         System.out.println("\nAll Students");
-        List<Student> students = service.getAllStudents();
+        List<Student> students = studentService.getAllStudents();
         
         if (students.isEmpty()) {
             System.out.println("No students in the system.");

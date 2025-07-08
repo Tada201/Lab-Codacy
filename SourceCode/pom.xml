@@ -56,6 +56,15 @@
                     <mainClass>app.Main</mainClass>
                 </configuration>
             </plugin>
+            <!-- Skip default jar creation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
             <!-- Create executable JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -68,6 +77,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>app.Main</mainClass>

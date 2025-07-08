@@ -1,9 +1,9 @@
 package model;
 
 public class Student {
-    private int id;
-    private String fullName;
-    private double gpa;
+    private final int id;
+    private final String fullName;
+    private final double gpa;
 
     public Student(int id, String fullName, double gpa) {
         this.id = id;
@@ -11,29 +11,17 @@ public class Student {
         this.gpa = gpa;
     }
 
-    // Getters and setters
+    // Getters only (no setters for immutability)
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public double getGpa() {
         return gpa;
-    }
-
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
     }
 
     @Override

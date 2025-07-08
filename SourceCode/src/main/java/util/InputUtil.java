@@ -3,7 +3,7 @@ package util;
 import java.util.Scanner;
 
 public class InputUtil {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public int getIntInput(String prompt) {
         while(true) {
